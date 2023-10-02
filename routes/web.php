@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +22,5 @@ Route::get('/', function () {
 Route::get('/home', [HomeController::class, 'index']);
 
 Route::get('/home/{name}', [HomeController::class, 'index']);
+
+Route::get('/posts', [PostController::class, 'index']);
