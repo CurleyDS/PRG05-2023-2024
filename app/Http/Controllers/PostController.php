@@ -14,10 +14,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        $post = new Post();
-        $post->text = 'The first ever post';
+        $posts = Post::get();
 
-        return view('posts', compact('post'));
+        return view('posts.index', compact('posts'));
     }
 
     /**
@@ -47,9 +46,11 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($id)
     {
-        //
+        $post = Post::find($id);
+
+        return view('posts.show', compact('post'));
     }
 
     /**

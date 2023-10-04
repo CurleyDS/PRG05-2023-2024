@@ -24,3 +24,5 @@ Route::get('/home', [HomeController::class, 'index']);
 Route::get('/home/{name}', [HomeController::class, 'index']);
 
 Route::get('/posts', [PostController::class, 'index']);
+
+Route::get('/posts/{id}', [PostController::class, 'show']);

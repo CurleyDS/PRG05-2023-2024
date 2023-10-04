@@ -9,7 +9,7 @@
 <body>
     <section>
         <h2>Posts:</h2>
-        <p>Today is {{ $post['text'] }}</p>
+        <p>{{ $post['text'] }}</p>
     </section>
 </body>
 </html>
