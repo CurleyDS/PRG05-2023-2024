@@ -19,10 +19,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', [HomeController::class, 'index']);
-
-Route::get('/home/{name}', [HomeController::class, 'index']);
-
 Route::get('/posts', [PostController::class, 'index']);
 
 Route::get('/posts/{id}', [PostController::class, 'show']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
