@@ -14,8 +14,8 @@
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="{{ url('/logout') }}">Logout</a>
 					@else
-					<a class="dropdown-item" href="{{ route('/register') }}">Sign up</a>
-					<a class="dropdown-item" href="{{ route('/login') }}">Sign in</a>
+					<a class="dropdown-item" href="{{ route('register') }}">Sign up</a>
+					<a class="dropdown-item" href="{{ route('login') }}">Sign in</a>
 					@endauth
 				</div>
 			</li>
