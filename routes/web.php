@@ -15,8 +15,15 @@ use App\Http\Controllers\PostController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
+Route::middleware('guest')->group(function () {
+    Route::get('/', function () {
+        return view('index');
+    });
 });
 
 Auth::routes();
+
+Route::middleware('auth')->group(function () {
+	Route::get('/home', [PostController::class, 'index']);
+    Route::get('/{id}', [PostController::class, 'show']);
+});
