@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
 
 /*
@@ -25,5 +26,23 @@ Auth::routes();
 
 Route::middleware('auth')->group(function () {
 	Route::get('/home', [PostController::class, 'index']);
-    Route::get('/{id}', [PostController::class, 'show']);
+
+    Route::prefix('chirp')->group(function () {
+        Route::get('/', [PostController::class, 'create']);
+        Route::post('/', [PostController::class, 'store']);
+
+        Route::get('/{id}', [PostController::class, 'show']);
+
+        Route::get('/{id}/edit', [PostController::class, 'edit']);
+        Route::post('/{id}/edit', [PostController::class, 'update']);
+
+        Route::get('/{id}/delete', [PostController::class, 'delete']);
+        Route::post('/{id}/delete', [PostController::class, 'destroy']);
+    });
+
+    Route::get('/logout', [UserController::class, 'logout']);
+
+    Route::prefix('{user}')->group(function () {
+        Route::get('/', [UserController::class, 'index']);
+    });
 });

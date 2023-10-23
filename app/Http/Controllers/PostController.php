@@ -11,6 +11,7 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
     public function index()
@@ -28,7 +29,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('post.create');
     }
 
     /**
@@ -61,9 +62,11 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit($id)
     {
-        //
+        $post = Post::find($id);
+
+        return view('post.edit', compact('post'));
     }
 
     /**
@@ -76,6 +79,19 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         //
+    }
+
+    /**
+     * Show the form for removing the specified resource.
+     *
+     * @param  \App\Models\Post  $post
+     * @return \Illuminate\Http\Response
+     */
+    public function delete($id)
+    {
+        $post = Post::find($id);
+
+        return view('post.delete', compact('post'));
     }
 
     /**
