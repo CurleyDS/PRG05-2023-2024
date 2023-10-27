@@ -34,10 +34,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/{id}', [PostController::class, 'show']);
 
         Route::get('/{id}/edit', [PostController::class, 'edit']);
-        Route::post('/{id}/edit', [PostController::class, 'update']);
+        Route::post('/edit', [PostController::class, 'update']);
 
         Route::get('/{id}/delete', [PostController::class, 'delete']);
-        Route::post('/{id}/delete', [PostController::class, 'destroy']);
+        Route::post('/delete', [PostController::class, 'destroy']);
     });
 
     Route::get('/logout', [UserController::class, 'logout']);

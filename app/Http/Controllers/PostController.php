@@ -40,7 +40,16 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if (!$request->input('text')) {
+            return redirect()->back()->with('text-error', 'You didnt type anything in your post');
+        }
+
+        $post = new Post();
+        $post->user_id = Auth::user()->id;
+        $post->text = $request->input('text');
+        $post->save();
+
+        return redirect('/home');
     }
 
     /**
@@ -52,6 +61,7 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::find($id);
+        dd($post);
 
         return view('post.show', compact('post'));
     }
@@ -76,9 +86,17 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request)
     {
-        //
+        if (!$request->input('text')) {
+            return redirect()->back()->with('text-error', 'You didnt type anything in your post')->withInput();
+        }
+
+        $post = Post::find($request->input('post'));
+        $post->text = $request->input('text');
+        $post->save();
+
+        return redirect('/home');
     }
 
     /**
@@ -100,8 +118,11 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy(Request $request)
     {
-        //
+        $post = Post::find($request->input('post'));
+        $post->delete();
+
+        return redirect('/home');
     }
 }

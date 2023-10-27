@@ -15,16 +15,16 @@
 
                 <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8">
                     <div class="col-span-3">
-                        <label for="text" class="block text-sm font-medium leading-6 text-gray-900">Text</label>
+                        <label for="text" class="block text-sm font-medium leading-6 text-gray-900">Post</label>
 
                         <div class="mt-2">
-                            <input id="text" type="text" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 @error('text') is-invalid @enderror" name="text" value="{{ old('text') }}" required autocomplete="text" autofocus>
+                            <textarea id="text" name="text" rows="4" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 @if(Session::has('text-error')) is-invalid @endif" placeholder="What is happening?"></textarea>
 
-                            @error('text')
+                            @if(Session::has('text-error'))
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
+                                    <strong>{{ Session::get('text-error') }}</strong>
                                 </span>
-                            @enderror
+                            @endif
                         </div>
                     </div>
                 </div>

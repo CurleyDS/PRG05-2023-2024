@@ -19,7 +19,6 @@ class CreatePostsTable extends Migration
             $table->foreignId('user_id');
             $table->text('text');
             $table->timestamps();
-            $table->softDeletes('deleted_at');
         });
     }
 

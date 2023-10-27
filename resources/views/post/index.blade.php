@@ -10,7 +10,7 @@
     <a href="{{ url('/chirp') }}">Create a chirp</a>
     <h2>Posts:</h2>
     @foreach($posts as $post)
-    <a href="{{ url('/chirp/' . $post['id']) }}">{{ $post['text'] }}</a>
+    <p><a href="{{ url('/chirp/' . $post['id']) }}">{{ $post['text'] }}</a></p>
     @endforeach
 </div>
 @endsection
