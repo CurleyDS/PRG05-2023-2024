@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div class="container">
+<div class="col-span-4 p-4">
     <div class="grid grid-rows-2 grid-flow-col pt-10 text-center">
         <h1 class="grid place-content-center row-span-2 p-2 font-bold text-3xl underline">
             Chirper

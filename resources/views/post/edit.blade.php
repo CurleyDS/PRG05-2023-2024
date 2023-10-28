@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div class="p-4 sm:ml-64">
+<div class="col-span-2 p-4">
     <form method="POST" action="{{ url('/chirp/edit') }}">
         @csrf
 
@@ -19,13 +19,13 @@
                         <label for="text" class="block text-sm font-medium leading-6 text-gray-900">Post</label>
 
                         <div class="mt-2">
-                            <textarea id="text" name="text" rows="4" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 @if(Session::has('text-error')) is-invalid @endif" placeholder="Edit your post">{{ !old('text') ? $post['text'] : old('text') }}</textarea>
+                            <textarea id="text" name="text" rows="4" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 @error('text') is-invalid @enderror" placeholder="Edit your post" required>{{ !old('text') ? $post['text'] : old('text') }}</textarea>
 
-                            @if(Session::has('text-error'))
+                            @error('text')
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ Session::get('text-error') }}</strong>
+                                    <strong>{{ $message }}</strong>
                                 </span>
-                            @endif
+                            @enderror
                         </div>
                     </div>
                 </div>

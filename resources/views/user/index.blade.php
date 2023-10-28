@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div class="p-4 sm:ml-64">
+<div class="col-span-2 p-4">
     User profile: {{ $user->name }}
 </div>
 @endsection

@@ -12,7 +12,7 @@ class Post extends Model
     /**
      * Get the user that owns the comment or reply.
      */
-    public function user(): BelongsTo
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
@@ -20,7 +20,7 @@ class Post extends Model
     /**
      * Get the parent post that owns the comment or reply.
      */
-    public function parent(): BelongsTo
+    public function parent()
     {
         return $this->belongsTo(Post::class);
     }
@@ -28,7 +28,7 @@ class Post extends Model
     /**
      * Get the comments or replies for post.
      */
-    public function comments(): HasMany
+    public function comments()
     {
         return $this->hasMany(Post::class, 'parent_id');
     }

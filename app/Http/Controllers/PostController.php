@@ -40,9 +40,9 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        if (!$request->input('text')) {
-            return redirect()->back()->with('text-error', 'You didnt type anything in your post');
-        }
+        $request->validate([
+            'text' => 'required|max:1000',
+        ]);
 
         $post = new Post();
         $post->user_id = Auth::user()->id;
@@ -61,7 +61,6 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::find($id);
-        dd($post);
 
         return view('post.show', compact('post'));
     }
@@ -88,11 +87,16 @@ class PostController extends Controller
      */
     public function update(Request $request)
     {
-        if (!$request->input('text')) {
-            return redirect()->back()->with('text-error', 'You didnt type anything in your post')->withInput();
-        }
+        $request->validate([
+            'text' => 'required|max:1000',
+        ]);
 
         $post = Post::find($request->input('post'));
+
+        if ($post->text == $request->input('text')) {
+            return redirect()->back()->withErrors(['text' => 'The text has not changed'])->withInput();
+        }
+
         $post->text = $request->input('text');
         $post->save();
 

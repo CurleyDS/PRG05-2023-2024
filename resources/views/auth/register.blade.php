@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="col-span-4 p-4">
     <div class="grid grid-rows-3 col-span-full pt-10">
         <form method="POST" action="{{ route('register') }}">
             @csrf
