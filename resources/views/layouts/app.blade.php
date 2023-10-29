@@ -9,16 +9,18 @@
 	@yield('styles')
 </head>
 <body>
-    <div class="grid grid-cols-4">
-        @auth
+    @auth
+        <div class="grid grid-cols-4">
             @include('partials.header')
-        @endauth
 
-        @yield('content')
+            @yield('content')
 
-        @auth
             @include('partials.sidebar')
-        @endauth
-    </div>
+        </div>
+    @else
+        <div>
+            @yield('content')
+        </div>
+    @endauth
 </body>
 </html>
