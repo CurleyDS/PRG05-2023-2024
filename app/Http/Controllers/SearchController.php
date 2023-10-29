@@ -18,11 +18,12 @@ class SearchController extends Controller
     {
         if ($request->input('search')) {
             $search = $request->input('search');
+            $searchUsers = User::where('name', 'LIKE', '%' . $request->input('search') . '%')->latest()->paginate(3);
             $searchPosts = Post::where('text', 'LIKE', '%' . $request->input('search') . '%')->latest()->paginate(25);
 
-            return view('search', compact('search', 'searchPosts'));
+            return view('search', compact('search', 'searchUsers', 'searchPosts'));
         } else {
-            return redirect()->back()->with('message', 'Empty search');
+            return redirect()->back()->withErrors(['search' => 'Empty search'])->withInput();
         }
 
     }
