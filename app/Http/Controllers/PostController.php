@@ -75,7 +75,12 @@ class PostController extends Controller
     {
         $post = Post::find($id);
 
-        return view('post.edit', compact('post'));
+        if ($post->user_id == Auth::user()->id || Auth::user()->role_id == 2) {
+            return view('post.edit', compact('post'));
+        } else {
+            return redirect()->back();
+        }
+
     }
 
     /**
@@ -113,7 +118,11 @@ class PostController extends Controller
     {
         $post = Post::find($id);
 
-        return view('post.delete', compact('post'));
+        if ($post->user_id == Auth::user()->id || Auth::user()->role_id == 2) {
+            return view('post.delete', compact('post'));
+        } else {
+            return redirect()->back();
+        }
     }
 
     /**
