@@ -10,17 +10,13 @@
 </head>
 <body>
     @auth
-        <div class="grid grid-cols-4">
-            @include('partials.header')
-
-            @yield('content')
-
-            @include('partials.sidebar')
-        </div>
-    @else
-        <div>
-            @yield('content')
-        </div>
+        @include('partials.header')
     @endauth
+
+        @auth
+            @include('partials.sidebar')
+        @endauth
+
+    @yield('content')
 </body>
 </html>
