@@ -41,7 +41,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'text' => 'required|max:1000',
+            'text' => 'required|string|max:1000',
         ]);
 
         $post = new Post();
@@ -75,7 +75,7 @@ class PostController extends Controller
     {
         $post = Post::find($id);
 
-        if ($post->user_id == Auth::user()->id || Auth::user()->role_id == 2) {
+        if ($post->user_id == Auth::user()->id || Auth::user()->id == 1) {
             return view('post.edit', compact('post'));
         } else {
             return redirect()->back();
@@ -93,7 +93,7 @@ class PostController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-            'text' => 'required|max:1000',
+            'text' => 'required|string|max:1000',
         ]);
 
         $post = Post::find($request->input('post'));
@@ -118,7 +118,7 @@ class PostController extends Controller
     {
         $post = Post::find($id);
 
-        if ($post->user_id == Auth::user()->id || Auth::user()->role_id == 2) {
+        if ($post->user_id == Auth::user()->id || Auth::user()->id == 1) {
             return view('post.delete', compact('post'));
         } else {
             return redirect()->back();

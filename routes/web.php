@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SearchController;
@@ -39,10 +38,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/{id}', [PostController::class, 'show']);
 
         Route::get('/{id}/edit', [PostController::class, 'edit']);
-        Route::post('/edit', [PostController::class, 'update']);
+        Route::put('/edit', [PostController::class, 'update']);
 
         Route::get('/{id}/delete', [PostController::class, 'delete']);
-        Route::post('/delete', [PostController::class, 'destroy']);
+        Route::delete('/delete', [PostController::class, 'destroy']);
     });
 
     Route::prefix('{user}')->group(function () {

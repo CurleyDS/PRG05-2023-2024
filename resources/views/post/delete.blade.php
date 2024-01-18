@@ -9,6 +9,7 @@
         <div class="sm:col-start-2 sm:col-span-3 px-3 py-4">
             <form method="POST" action="{{ url('/chirp/delete') }}">
                 @csrf
+                @method('DELETE')
 
                 <div class="space-y-12">
                     <div class="border-b border-gray-900/10 pb-12">
