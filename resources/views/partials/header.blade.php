@@ -1,4 +1,4 @@
-<nav id="default-sidebar" class="fixed top-0 left-0 w-1/5 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+<nav id="default-sidebar" class="fixed top-0 left-0 w-1/5 h-screen transition-transform -translate-x-full sm:translate-x-0 border-r" aria-label="Sidebar">
     <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
         <a href="{{ url('/') }}" class="flex items-center pl-2.5 mb-5">
            <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Chirper</span>

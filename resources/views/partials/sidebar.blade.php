@@ -1,4 +1,4 @@
-<aside id="search-sidebar" class="fixed top-0 right-0 w-1/5 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+<aside id="search-sidebar" class="fixed top-0 right-0 w-1/5 h-screen transition-transform -translate-x-full sm:translate-x-0 border-l" aria-label="Sidebar">
     <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
         <form method="GET" action="{{ url('/search') }}">
             <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>

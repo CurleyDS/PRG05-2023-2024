@@ -8,15 +8,19 @@
 
 	@yield('styles')
 </head>
-<body>
+<body class="text-white dark:bg-gray-800">
     @auth
         @include('partials.header')
     @endauth
 
-        @auth
-            @include('partials.sidebar')
-        @endauth
+    @auth
+        @include('partials.sidebar')
+    @endauth
 
-    @yield('content')
+    <div class="sm:grid sm:grid-cols-5">
+        <div class="sm:col-start-2 sm:col-span-3">
+            @yield('content')
+        </div>
+    </div>
 </body>
 </html>
