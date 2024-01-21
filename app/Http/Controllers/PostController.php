@@ -37,7 +37,7 @@ class PostController extends Controller
             array_push($followingIds, $following->id);
         }
         $followReq = (count($followingIds) >= 5);
-        $posts = Post::latest()->whereIn('user_id', $followingIds)->latest()->get();
+        $posts = Post::whereIn('user_id', $followingIds)->latest()->get();
 
         return view('post.following', compact('user', 'followReq', 'posts'));
     }
@@ -100,7 +100,6 @@ class PostController extends Controller
         } else {
             return redirect()->back();
         }
-
     }
 
     /**
