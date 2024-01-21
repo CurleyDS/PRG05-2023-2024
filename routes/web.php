@@ -46,5 +46,6 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('{user}')->group(function () {
         Route::get('/', [UserController::class, 'index']);
+        Route::post('/', [UserController::class, 'toggle_follow']);
     });
 });

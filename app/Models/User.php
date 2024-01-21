@@ -43,18 +43,26 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the user role associated with the user.
-     */
-    public function user_role()
-    {
-        return $this->hasOne(UserRole::class, 'id', 'role_id');
-    }
-
-    /**
      * Get the posts of the user.
      */
     public function posts()
     {
         return $this->hasMany(Post::class);
+    }
+
+    /**
+     * Get the followings of the user.
+     */
+    public function followings()
+    {
+        return $this->belongsToMany(User::class, 'user_followers', 'follower_id', 'user_id');
+    }
+
+    /**
+     * Get the followers of the user.
+     */
+    public function followers()
+    {
+        return $this->belongsToMany(User::class, 'user_followers', 'user_id', 'follower_id');
     }
 }
