@@ -26,6 +26,26 @@ class UserSeeder extends Seeder
                 'email' => 'dylantester2@gmail.com',
                 'password' => Hash::make('tester8'),
             ],
+            [
+                'name' => 'Pureojuice',
+                'email' => 'testeracc3@gmail.com',
+                'password' => Hash::make('tester8'),
+            ],
+            [
+                'name' => 'Derivakat',
+                'email' => 'testeracc4@gmail.com',
+                'password' => Hash::make('tester8'),
+            ],
+            [
+                'name' => 'Suzume',
+                'email' => 'testeracc5@gmail.com',
+                'password' => Hash::make('tester8'),
+            ],
+            [
+                'name' => 'Garnt',
+                'email' => 'testeracc6@gmail.com',
+                'password' => Hash::make('tester8'),
+            ],
         ]);
     }
 }

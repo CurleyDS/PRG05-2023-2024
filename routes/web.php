@@ -26,6 +26,7 @@ Auth::routes();
 
 Route::middleware('auth')->group(function () {
 	Route::get('/home', [PostController::class, 'index']);
+	Route::get('/following', [PostController::class, 'following']);
 
     Route::get('/logout', [UserController::class, 'logout']);
 

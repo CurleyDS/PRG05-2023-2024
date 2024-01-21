@@ -23,6 +23,26 @@ class PostController extends Controller
     }
 
     /**
+     * Display a listing of the resource where user follows at least 5 users.
+     *
+     * @param  \App\Models\Post  $post
+     * @return \Illuminate\Http\Response
+     */
+    public function following()
+    {
+        $user = Auth::user();
+
+        $followingIds = [];
+        foreach ($user->followings as $following) {
+            array_push($followingIds, $following->id);
+        }
+        $followReq = (count($followingIds) >= 5);
+        $posts = Post::latest()->whereIn('user_id', $followingIds)->latest()->get();
+
+        return view('post.following', compact('user', 'followReq', 'posts'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

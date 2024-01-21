@@ -18,14 +18,16 @@ class UserController extends Controller
     public function index($profile)
     {
         $user = Auth::user();
-
         $isFollowing = false;
-        if (!$user->followings()->where('follower_id', $user->id)->exists()) {
-            $isFollowing = true;
-        }
 
         if (Auth::user()->name != $profile) {
-            $user = User::where('name', $profile)->first();
+            $profile = User::where('name', $profile)->first();
+
+            if ($user->followings()->where('user_id', $profile->id)->exists()) {
+                $isFollowing = true;
+            }
+
+            $user = $profile;
         }
 
         return view('user.index', compact('user', 'isFollowing'));
@@ -44,7 +46,7 @@ class UserController extends Controller
         $followingId = $request->input('user_id');
         $following = User::find($followingId);
 
-        if ($user->followings()->where('follower_id', $user->id)->exists()) {
+        if ($user->followings()->where('user_id', $following->id)->exists()) {
             $user->followings()->detach($following);
         } else {
             $user->followings()->attach($following);
